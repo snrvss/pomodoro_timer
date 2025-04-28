@@ -11,8 +11,6 @@ export interface QuotePort {
 }
 
 // @TODO
-// install extention TODO 
-// prettier. json configure
 // package json installation of other packages
 // check that I can build tests
 // check that I can build my packages

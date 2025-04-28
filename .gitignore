@@ -1,0 +1,38 @@
+# Node
+node_modules/
+.pnpm/
+.yarn/
+dist/
+build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+
+# Editor folders
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Output folders for apps
+apps/*/dist/
+apps/*/build/
+
+# Output folders for packages (if any build step)
+packages/*/dist/
+packages/*/build/
