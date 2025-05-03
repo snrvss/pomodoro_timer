@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+
 </script>
 
 <template>
   <header>
+   
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -83,3 +85,17 @@ nav a:first-of-type {
   }
 }
 </style>
+
+<!-- TODO
+ADD TAILWIND TOKENS
+ADD TAILWIND VERSION 4
+LIGGHT MODE AND DARK MODE
+ADD TAILWIND BREAKPOINTS
+CREATE A CARD COMPONENT
+CREATE A BUTTON COMPONENT
+CREATE A TEXT BUTTON COMPONENT
+CREATE A SWITCH COMPONENT
+CREATE BASIC LAYOUT 
+CREATE A COMPONENT FOR A TIMER
+CREATE A MODAL TIMER
+-->
