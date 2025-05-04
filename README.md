@@ -15,7 +15,7 @@ Timer {
 ```
 
 ### Session Type
- 
+
 ```
  enum SessionType {
     FOCUS = 'focus'
@@ -27,17 +27,17 @@ Timer {
 ### Pomodoro Session
 
 PomodoroSession {
-    id: string
-    type: SesionType
-    duration: number
-    remaining: number
-    isRunning: boolean
-    startedAt?: number
+id: string
+type: SesionType
+duration: number
+remaining: number
+isRunning: boolean
+startedAt?: number
 }
 
 ### Quote
 
 Quote{
-    id: string
-    text: string
+id: string
+text: string
 }
