@@ -15,10 +15,10 @@ jobs:
           node-version: 20
           cache: yarn
 
-      - name: Setup Yarn (v4)
-        run: corepack enable && corepack prepare yarn@4.1.1 --activate
+      - name: Install Yarn 1.x
+        run: corepack disable && npm install -g yarn@1.22.22
 
-      - run: yarn install --immutable
+      - run: yarn install --frozen-lockfile
 
       - name: Lint
         run: yarn lint
