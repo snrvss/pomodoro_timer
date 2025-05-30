@@ -8,9 +8,3 @@ export interface QuotePort {
    */
   tryFetchQuote(): Promise<Quote>
 }
-
-// @TODO
-// package json installation of other packages
-// check that I can build tests
-// check that I can build my packages
-// check that I can upload my project

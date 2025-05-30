@@ -1,10 +1,8 @@
 import { SessionType } from './session_type'
+import { Timer } from './timer'
 
 export interface PomodoroSession {
   id: string
   type: SessionType
-  duration: number
-  remaining: number
-  isRunning: boolean
-  startedAt?: number
+  timer: Timer
 }

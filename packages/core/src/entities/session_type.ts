@@ -1,3 +1,5 @@
+import { Timer } from './timer'
+
 export enum SessionType {
   FOCUS = 'focus',
   SHORT_BREAK = 'short_break',
