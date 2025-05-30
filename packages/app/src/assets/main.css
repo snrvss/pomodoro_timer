@@ -1,4 +1,4 @@
-@import './base.css';
+@import 'tailwindcss';
 
 #app {
   max-width: 1280px;
@@ -32,4 +32,36 @@ a,
     grid-template-columns: 1fr 1fr;
     padding: 0 2rem;
   }
+}
+
+@theme {
+  /* Material Design 3–inspired Colors */
+  --color-primary: #7b3f00;
+  --color-on-primary: #ffffff;
+
+  --color-secondary: #a67858;
+  --color-on-secondary: #ffffff;
+
+  --color-tertiary: #c0a072;
+  --color-on-tertiary: #3f2e10;
+
+  --color-surface: #fdecc8;
+  --color-on-surface: #3b2f2f;
+
+  --color-background: #fff8e7;
+  --color-on-background: #3b2f2f;
+
+  --font-display: 'Satoshi', 'sans-serif';
+
+  /* Fonts */
+  --font-display: 'Satoshi', sans-serif;
+  --font-baloo: 'Baloo', cursive;
+  --font-baloo2: 'Baloo 2', cursive;
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
