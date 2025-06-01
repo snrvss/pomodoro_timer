@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-// import BasicCheckbox from './components/Checkbox.vue'
+import BasicCheckbox from './components/Checkbox.vue'
 </script>
 
 <template>
