@@ -1,5 +1,11 @@
 <template>
-  <input type="checkbox" :checked="value" :disabled="disabled" @change="handleCheckbox" />
+  <input
+    type="checkbox"
+    class="checkbox"
+    :checked="value"
+    :disabled="disabled"
+    @change="handleCheckbox"
+  />
 </template>
 
 <script setup lang="ts">
@@ -17,3 +23,8 @@ const handleCheckbox = (event: Event) => {
   emit('update:value', newChecked)
 }
 </script>
+<style lang="postcss">
+.checkbox {
+  @apply hidden border rounded;
+}
+</style>
