@@ -1,5 +1,5 @@
-// tailwind.config.js
-export default {
+module.exports = {
+  content: ['./index.html', './src/**/*.{vue,js,ts}'],
   theme: {
     extend: {
       colors: {
@@ -17,4 +17,5 @@ export default {
       },
     },
   },
+  plugins: [require('daisyui')],
 }
