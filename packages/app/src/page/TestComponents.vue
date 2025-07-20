@@ -1,24 +1,22 @@
 <template>
-  <button class="btn btn-primary">Click me</button>
+  <button class="btn bg-[var(--color-primary)] text-[var(--color-on-primary)]">Click me</button>
+
+  <div class="absolute top-4 right-4 flex items-center gap-2 z-10">
+    <input type="checkbox" class="toggle" :checked="mode === 'dark'" @change="toggleTheme" />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue'
+import { useColorMode } from '@vueuse/core'
 
-const props = defineProps({
-  value: Boolean,
-  disabled: Boolean,
+const mode = useColorMode({
+  selector: 'html', // applies 'dark' class to <html>
+  attribute: 'class', // matches tailwind darkMode: class
 })
 
-const emit = defineEmits(['update:value'])
-
-const handleCheckbox = (event: Event) => {
-  const newChecked = (event.target as HTMLInputElement).checked
-  emit('update:value', newChecked)
+// Handle checkbox change
+function toggleTheme(event: Event) {
+  const isChecked = (event.target as HTMLInputElement).checked
+  mode.value = isChecked ? 'dark' : 'light'
 }
 </script>
-<style lang="postcss">
-.checkbox {
-  @apply hidden border rounded;
-}
-</style>
