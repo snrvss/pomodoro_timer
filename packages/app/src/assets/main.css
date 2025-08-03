@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: var(--color-surface);
+  background-color: var(--color-background);
   color: var(--color-on-surface);
 }
 #app {
@@ -58,7 +58,7 @@ a,
   --color-surface: #fdecc8;
   --color-on-surface: #3b2f2f;
 
-  --color-background: #fff8e7;
+  --color-background: #fff9eb;
   --color-on-background: #3b2f2f;
 
   --font-display: 'Satoshi', 'sans-serif';

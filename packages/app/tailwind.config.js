@@ -4,11 +4,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#FFF8E7',
-        surface: '#FDECC8',
-        primary: '#7B3F00',
-        onPrimary: '#FFFFFF',
-        onSurface: '#3B2F2F',
+        primary: 'var(--color-primary)',
+        onPrimary: 'var(--color-on-primary)',
+        surface: 'var(--color-surface)',
+        onSurface: 'var(--color-on-surface)',
+        background: 'var(--color-background)',
+        onBackground: 'var(--color-on-background)',
       },
       fontFamily: {
         sans: ['"Inter"', 'sans-serif'],
