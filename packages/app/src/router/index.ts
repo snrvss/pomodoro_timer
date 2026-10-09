@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import TestComponents from '@/page/TestComponents.vue'
+import TestComponents from '@/page/PomodoroPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

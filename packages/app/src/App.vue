@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import BasicCheckbox from './components/Checkbox.vue'
+import { RouterView } from 'vue-router'
+import SwitchMode from './components/Switch.vue'
 </script>
 
 <template>
-  <BasicCheckbox></BasicCheckbox>
-
+  <SwitchMode></SwitchMode>
   <RouterView />
 </template>
 
