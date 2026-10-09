@@ -8,10 +8,13 @@
     <div class="justify-center text-center mb-4">TIME</div>
     <!-- Buttons -->
     <div class="flex justify-center gap-x-5 items-center">
-      <font-awesome-icon icon="repeat" class="text-primary" />
+      <IconButton>
+        <font-awesome-icon icon="repeat" class="text-primary" />
+      </IconButton>
       <FilledButton label="Start"></FilledButton>
-
-      <font-awesome-icon icon="forward-step" class="text-primary" />
+      <IconButton>
+        <font-awesome-icon icon="forward-step" class="text-primary" />
+      </IconButton>
     </div>
   </div>
 </template>
@@ -19,6 +22,7 @@
 import FilledButton from '../FilledButton.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faForwardStep, faRepeat, faGear } from '@fortawesome/free-solid-svg-icons'
+import IconButton from '../IconButton.vue'
 library.add(faForwardStep, faRepeat, faGear)
 
 const props = defineProps({

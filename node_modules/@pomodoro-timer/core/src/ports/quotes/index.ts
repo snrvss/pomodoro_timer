@@ -1,4 +1,4 @@
-import { Quote } from 'entities/quote'
+import { Quote } from '@/entities'
 
 export interface QuotePort {
   /**

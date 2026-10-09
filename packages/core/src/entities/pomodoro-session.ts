@@ -1,4 +1,4 @@
-import { SessionType } from './session_type'
+import { SessionType } from './session-type'
 import { Timer } from './timer'
 
 export interface PomodoroSession {
