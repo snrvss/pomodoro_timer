@@ -157,7 +157,7 @@ defineExpose({ close })
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.25px;
-  opacity: 0.8;
+  color: color-mix(in srgb, var(--color-on-surface) 80%, transparent);
 }
 
 .md-dialog__actions {

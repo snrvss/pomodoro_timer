@@ -2,8 +2,11 @@
   <div class="pomodoro-card">
     <!-- Setting -->
     <div class="flex justify-end">
-      <font-awesome-icon icon="gear" class="text-primary" />
+      <IconButton aria-label="Settings" @click="settingsOpen = true">
+        <font-awesome-icon icon="gear" class="text-primary" />
+      </IconButton>
     </div>
+    <SettingsView v-model="settingsOpen" />
 
     <div class="justify-center text-center mb-4">TIME</div>
     <!-- Buttons -->
@@ -19,11 +22,15 @@
   </div>
 </template>
 <script setup lang="ts">
+import { ref } from 'vue'
 import FilledButton from '../FilledButton.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faForwardStep, faRepeat, faGear } from '@fortawesome/free-solid-svg-icons'
 import IconButton from '../IconButton.vue'
+import SettingsView from '@/view/SettingsView.vue'
 library.add(faForwardStep, faRepeat, faGear)
+
+const settingsOpen = ref(false)
 
 const props = defineProps({
   timer: {

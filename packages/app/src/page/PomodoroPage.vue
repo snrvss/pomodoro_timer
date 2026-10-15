@@ -1,9 +1,7 @@
 <template>
   <div class="w-full justify-center">
     <div class="flex-col flex">
-      <div>
-        <img .src="QuietStreet" alt="" />
-      </div>
+      <div><img .src="QuietStreet" alt="" /></div>
       <Configuration></Configuration>
       <Card></Card>
     </div>
