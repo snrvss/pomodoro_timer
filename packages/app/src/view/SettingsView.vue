@@ -4,7 +4,7 @@
 
     <div class="flex flex-col gap-6">
       <!-- Durations -->
-      <div class="grid grid-cols-3 gap-4">
+      <div class="grid grid-cols-3 gap-4 mt-2">
         <TextField v-model="pomodoro" label="Pomodoro" type="number" />
         <TextField v-model="shortBreak" label="Short Break" type="number" />
         <TextField v-model="longBreak" label="Long Break" type="number" />
