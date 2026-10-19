@@ -25,6 +25,6 @@ const handleCheckbox = (event: Event) => {
 </script>
 <style lang="postcss">
 .checkbox {
-  @apply hidden border rounded;
+  @apply border rounded;
 }
 </style>
