@@ -1,11 +1,22 @@
 import { onScopeDispose } from 'vue'
+import { useLocalStorage } from '@vueuse/core'
 import {
   MODE_LABELS,
+  STORAGE_PREFIX,
   usePomodoroStore,
   type SessionEndEvent,
 } from '@/stores/pomodoro-session/use-pomodoro-session-store'
 
 let audioContext: AudioContext | undefined
+
+/**
+ * Whether the session-end chime plays. On by default, saved in localStorage.
+ *
+ * @remarks
+ * Kept apart from the timer settings on purpose: it's an alert preference, not part of core's
+ * `PomodoroSettings`. The browser notification is not affected by it.
+ */
+export const soundEnabled = useLocalStorage(`${STORAGE_PREFIX}sound-enabled`, true)
 
 const notificationsSupported = () => typeof window !== 'undefined' && 'Notification' in window
 
@@ -37,10 +48,10 @@ export const primeSessionAlerts = async () => {
   }
 }
 
-/** Plays a short two-tone chime with the Web Audio API. */
+/** Plays a short two-tone chime with the Web Audio API, unless the sound is turned off. */
 const playChime = () => {
   const ctx = audioContext
-  if (!ctx || ctx.state !== 'running') return
+  if (!soundEnabled.value || !ctx || ctx.state !== 'running') return
 
   const now = ctx.currentTime
   ;[880, 1320].forEach((frequency, i) => {
@@ -71,8 +82,8 @@ const showNotification = ({ ended, next }: SessionEndEvent) => {
 }
 
 /**
- * Plays a sound and shows a browser notification whenever a session
- * runs out. The listener is removed when the calling component unmounts.
+ * Plays a sound (if {@link soundEnabled}) and shows a browser notification (if permitted)
+ * whenever a session runs out. The listener is removed when the calling component unmounts.
  */
 export const useSessionAlert = () => {
   const store = usePomodoroStore()
