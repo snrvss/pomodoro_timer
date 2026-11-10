@@ -16,8 +16,7 @@ export interface SessionEndEvent {
 export type SessionEndListener = (event: SessionEndEvent) => void
 
 /**
- * Default timer settings. Durations are in minutes. Uses core's `PomodoroSettings`, so the store
- * can later delegate to a `PomodoroPort` without converting.
+ * Default timer settings. Durations are in minutes. Typed with core's `PomodoroSettings`.
  */
 export const DEFAULT_SETTINGS: PomodoroSettings = {
   pomodoroDuration: 25,
@@ -80,13 +79,11 @@ const mergeSettings = (
 })
 
 /**
- * Pomodoro timer state backed by local mock logic.
+ * Pomodoro timer state and logic.
  *
  * @remarks
- * The public API (state + start/pause/reset/skip/setMode/updateSettings)
- * maps one-to-one onto `PomodoroPort` (start/pause/restart/next/
- * setSessionType/setSettings), so the internals can be swapped for a port
- * implementation without changing components.
+ * Public API: state + start/pause/reset/skip/setMode/updateSettings, and `onSessionEnd` for
+ * listeners that react when a session runs out.
  *
  * Settings, mode, remaining time and round are persisted to localStorage.
  * `isRunning` is not, so a reload always comes back paused.

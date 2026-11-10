@@ -187,9 +187,9 @@ Cypress covers the page in a real browser: initial state and switching modes via
 ├── vite-plugin-src-alias.ts        # `@/` → src of the importing package
 └── packages/
     ├── core/src/
-    │   ├── entities/               # Quote, PomodoroSettings, Timer, SessionType, …
+    │   ├── entities/               # Quote, PomodoroSettings
     │   ├── errors/                 # DomainError and its subclasses, toDomainError
-    │   ├── ports/                  # QuotePort, PomodoroPort (planned)
+    │   ├── ports/                  # QuotePort
     │   └── services/               # QuoteService, FALLBACK_QUOTES, createServices
     ├── infrastructure/src/
     │   ├── rest-client/            # RestClient (fetch, timeout, error mapping)
@@ -209,11 +209,3 @@ Cypress covers the page in a real browser: initial state and switching modes via
             ├── page/               # PomodoroPage
             └── assets/             # styles (design tokens) and illustrations
 ```
-
-## Roadmap
-
-- **Timer engine in core:** core already defines `PomodoroPort` (`getSnapshot`, `setSettings`,
-  `setSessionType`, `start`, `pause`, `restart`, `next`, `tick`) and the entities `Timer`,
-  `SessionType`, `PomodoroSession` and `PomodoroSnapshot`. The next step is an implementation of
-  that port in core, so the timer logic moves out of the Pinia store. The store's public API
-  already maps one-to-one onto the port, so components won't need to change.

@@ -8,9 +8,9 @@ network.
 
 | Folder         | What's in it                                                                                                                                                            |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `src/entities` | `Quote`, `PomodoroSettings`, and the timer model for the planned engine: `Timer`, `SessionType`, `PomodoroSession`, `PomodoroSnapshot`                                  |
+| `src/entities` | `Quote` and `PomodoroSettings`                                                                                                                                          |
 | `src/errors`   | `DomainError` (with `code` and `retryable`), `NetworkError`, `TimeoutError`, `ServerError`, `InvalidResponseError`, `UnexpectedError`, `toDomainError`, `isDomainError` |
-| `src/ports`    | `QuotePort` (`getRandomQuotes()`), and `PomodoroPort`, the planned timer engine                                                                                         |
+| `src/ports`    | `QuotePort` (`getRandomQuotes()`)                                                                                                                                       |
 | `src/services` | `QuoteService.getShortQuote()`, `MAX_QUOTE_LENGTH` (80), `FALLBACK_QUOTES`, and the `createServices(quotePort)` façade                                                  |
 
 `QuoteService` keeps quotes of at most `MAX_QUOTE_LENGTH` characters and returns a random one. If
