@@ -15,7 +15,12 @@ import Configuration from '@/components/Pomodoro/Configuration.vue'
 import { useTitle } from '@vueuse/core'
 import { usePomodoroStore } from '@/stores/pomodoro-session/use-pomodoro-session-store'
 
+import { useSessionAlert } from '@/composables/useSessionAlert'
+
 const store = usePomodoroStore()
+
+// Sound + browser notification when a session runs out
+useSessionAlert()
 
 // Show the countdown in the browser tab; the original title is restored on unmount
 useTitle(() => `${store.formattedTime} – ${store.modeLabel}`)

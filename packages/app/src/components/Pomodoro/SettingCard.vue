@@ -31,23 +31,21 @@ import { faForwardStep, faRepeat, faGear } from '@fortawesome/free-solid-svg-ico
 import IconButton from '../IconButton.vue'
 import SettingsView from '@/view/SettingsView.vue'
 import { usePomodoroStore } from '@/stores/pomodoro-session/use-pomodoro-session-store'
+import { primeSessionAlerts } from '@/composables/useSessionAlert'
 library.add(faForwardStep, faRepeat, faGear)
 
 const store = usePomodoroStore()
 const settingsOpen = ref(false)
 
-const toggle = () => (store.isRunning ? store.pause() : store.start())
-
-const props = defineProps({
-  timer: {
-    type: String,
-    default: 'Click m e',
-  },
-  configuration: {
-    type: String,
-    default: 'Click m e',
-  },
-})
+const toggle = () => {
+  if (store.isRunning) {
+    store.pause()
+    return
+  }
+  store.start()
+  // Runs inside the click so the browser allows audio and the permission prompt
+  void primeSessionAlerts()
+}
 </script>
 <style lang="postcss">
 .pomodoro-card {
