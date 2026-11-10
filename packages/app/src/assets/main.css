@@ -17,20 +17,6 @@ body {
   font-weight: normal;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
 :root {
   /* Light theme – warm cream + terracotta */
   --color-primary: #a4512d;
@@ -52,16 +38,6 @@ a,
 
   --color-background: #f8f0e4;
   --color-on-background: #4a2c20;
-
-  --font-display: 'Satoshi', 'sans-serif';
-  --font-baloo: 'Baloo', cursive;
-  --font-baloo2: 'Baloo 2', cursive;
-
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
 }
 
 /* Dark mode */
