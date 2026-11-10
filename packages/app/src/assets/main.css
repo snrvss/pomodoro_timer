@@ -32,21 +32,26 @@ a,
 }
 
 :root {
-  /* Light theme */
-  --color-primary: #7b3f00;
+  /* Light theme – warm cream + terracotta */
+  --color-primary: #a4512d;
   --color-on-primary: #ffffff;
 
-  --color-secondary: #a67858;
+  --color-secondary: #c98a5e;
   --color-on-secondary: #ffffff;
 
-  --color-tertiary: #c0a072;
+  --color-tertiary: #f2c86b;
   --color-on-tertiary: #3f2e10;
 
-  --color-surface: #fdecc8;
-  --color-on-surface: #3b2f2f;
+  /* Timer card */
+  --color-surface: #fcecd4;
+  --color-on-surface: #4a2c20;
+  /* Mode switch track, subtle fills */
+  --color-surface-container: #efe1cc;
+  /* Hairline borders */
+  --color-outline: #f0dcc0;
 
-  --color-background: #fff9eb;
-  --color-on-background: #3b2f2f;
+  --color-background: #f8f0e4;
+  --color-on-background: #4a2c20;
 
   --font-display: 'Satoshi', 'sans-serif';
   --font-baloo: 'Baloo', cursive;
@@ -61,15 +66,17 @@ a,
 
 /* Dark mode */
 .dark {
-  --color-primary: #ddb892;
-  --color-on-primary: #1a1a1a;
+  --color-primary: #e08a5f;
+  --color-on-primary: #2a140b;
 
-  --color-secondary: #7b3f00;
+  --color-secondary: #a4512d;
   --color-on-secondary: #ffffff;
 
-  --color-surface: #1a1a1a;
-  --color-on-surface: #ededed;
+  --color-surface: #2a211c;
+  --color-on-surface: #f3e6d8;
+  --color-surface-container: #231b17;
+  --color-outline: #3a2e27;
 
-  --color-background: #111111;
-  --color-on-background: #ffffff;
+  --color-background: #171210;
+  --color-on-background: #f3e6d8;
 }

@@ -8,16 +8,18 @@ module.exports = {
         onPrimary: 'var(--color-on-primary)',
         surface: 'var(--color-surface)',
         onSurface: 'var(--color-on-surface)',
+        surfaceContainer: 'var(--color-surface-container)',
+        outline: 'var(--color-outline)',
         background: 'var(--color-background)',
         onBackground: 'var(--color-on-background)',
       },
       fontFamily: {
-        sans: ['"Inter"', 'sans-serif'],
+        sans: ['"Nunito"', 'ui-rounded', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         xl: '1.5rem', // for rounded timer card
       },
     },
   },
-  plugins: [require('daisyui')],
+  plugins: [],
 }

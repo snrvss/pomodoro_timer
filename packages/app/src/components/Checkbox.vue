@@ -25,6 +25,16 @@ const handleCheckbox = (event: Event) => {
 </script>
 <style lang="postcss">
 .checkbox {
-  @apply border rounded;
+  @apply w-5 h-5 rounded cursor-pointer;
+  accent-color: var(--color-primary);
+}
+
+.checkbox:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.checkbox:disabled {
+  @apply opacity-40 cursor-not-allowed;
 }
 </style>
