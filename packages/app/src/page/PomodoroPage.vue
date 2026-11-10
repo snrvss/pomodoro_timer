@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full justify-center">
-    <div class="flex-col flex">
+  <div class="w-full min-h-[calc(100vh-4rem)] flex items-center justify-center">
+    <div class="flex flex-col items-center">
       <div><img .src="QuietStreet" alt="" /></div>
       <Configuration></Configuration>
       <Card></Card>
