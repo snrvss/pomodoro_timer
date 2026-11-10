@@ -2,7 +2,9 @@
 
 Vue 3 · TypeScript · Pinia · Tailwind CSS · Vite · Vitest · Cypress · hexagonal architecture
 
-![Pomodoro Timer: the timer page right after a focus session, with the success card and a quote](docs/images/screenshot.png)
+<p align="center">
+  <img src="docs/screenshot-desktop.png" alt="Pomodoro timer – desktop" width="600">
+</p>
 
 A Pomodoro timer built with **Vue 3 + TypeScript** in a hexagonal (ports and adapters)
 architecture. It cycles through **focus**, **short break** and **long break** sessions, can start
@@ -172,7 +174,7 @@ Cypress covers the page in a real browser: initial state and switching modes via
 ```
 .
 ├── .github/workflows/main.yml      # CI: lint, type check, unit tests
-├── docs/images/                    # README screenshot
+├── docs/screenshot-desktop.png     # README screenshot (1440×900)
 ├── vite-plugin-src-alias.ts        # `@/` → src of the importing package
 └── packages/
     ├── core/src/
