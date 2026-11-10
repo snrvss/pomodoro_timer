@@ -28,8 +28,10 @@ Copy `.env.example` to `.env.local` in this folder and adjust:
 
 | Variable             | Values           | Default                 |
 | -------------------- | ---------------- | ----------------------- |
-| `VITE_QUOTE_ADAPTER` | `mock` \| `http` | `mock`                  |
+| `VITE_QUOTE_ADAPTER` | `http` \| `mock` | `http`                  |
 | `VITE_QUOTE_API_URL` | base URL         | `https://dummyjson.com` |
 
-- `mock` reads quotes from a local JSON file, no network needed.
-- `http` fetches quotes from the DummyJSON-compatible API at `VITE_QUOTE_API_URL`.
+- `http` (default) fetches quotes from the DummyJSON-compatible API at `VITE_QUOTE_API_URL`.
+- `mock` reads quotes from a local JSON file, no network needed. Unit tests always use it.
+- If the API is unreachable, slow (5 s timeout) or returns unusable data, the success card still
+  appears with a short local quote, so a session end never shows an error.
