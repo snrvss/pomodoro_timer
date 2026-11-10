@@ -1,9 +1,15 @@
 # Pomodoro Timer
 
+[![Live Demo | Vercel](https://img.shields.io/badge/Live%20Demo-Vercel-000000?logo=vercel&logoColor=white)](https://pomodoro-timer-three-self.vercel.app/)
+
+**[Live Demo →](https://pomodoro-timer-three-self.vercel.app/)**
+
 Vue 3 · TypeScript · Pinia · Tailwind CSS · Vite · Vitest · Cypress · hexagonal architecture
 
 <p align="center">
-  <img src="docs/screenshot-desktop.png" alt="Pomodoro timer – desktop" width="600">
+  <a href="https://pomodoro-timer-three-self.vercel.app/">
+    <img src="docs/screenshot-desktop.png" alt="Pomodoro timer – desktop" width="600">
+  </a>
 </p>
 
 A Pomodoro timer built with **Vue 3 + TypeScript** in a hexagonal (ports and adapters)
@@ -45,6 +51,9 @@ a finished session never ends in an error.
 ## Getting started
 
 Requires Node.js 20 or newer (CI runs on 20) and Yarn 1.
+
+The [live version](https://pomodoro-timer-three-self.vercel.app/) uses the DummyJSON quote API
+(`VITE_QUOTE_ADAPTER=http` is set in Vercel).
 
 ```bash
 yarn install
