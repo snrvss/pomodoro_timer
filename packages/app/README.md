@@ -1,61 +1,35 @@
-# apps
+# Pomodoro Timer – app
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue 3 + Vite front end of the Pomodoro timer: focus / short break / long break sessions with
+configurable durations, a browser notification and sound when a session ends, and a short
+motivational quote after each focus session.
 
-## Recommended IDE Setup
+The app is the outer layer of the monorepo:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- `packages/core` – entities, ports, errors and services (no Vue, no HTTP)
+- `packages/infrastructure` – adapters for the ports, e.g. the DummyJSON quote API
+- `packages/app` – this package: UI, Pinia stores and the composition root in `src/api`
 
-## Type Support for `.vue` Imports in TS
+## Commands
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Run `yarn install` once in the repository root, then:
 
-## Customize configuration
+| Command                              | What it does                              |
+| ------------------------------------ | ----------------------------------------- |
+| `yarn dev` (in `packages/app`)       | Start the dev server                      |
+| `yarn build` (in `packages/app`)     | Type-check and build to `dist/`           |
+| `yarn test:unit` (in `packages/app`) | Run the app's unit tests in watch mode    |
+| `yarn test` (in the repository root) | Run the unit tests of every package       |
+| `yarn test:e2e` (in `packages/app`)  | Run Cypress against the last `yarn build` |
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Configuration
 
-## Project Setup
+Copy `.env.example` to `.env.local` in this folder and adjust:
 
-```sh
-yarn
-```
+| Variable             | Values           | Default                 |
+| -------------------- | ---------------- | ----------------------- |
+| `VITE_QUOTE_ADAPTER` | `mock` \| `http` | `mock`                  |
+| `VITE_QUOTE_API_URL` | base URL         | `https://dummyjson.com` |
 
-### Compile and Hot-Reload for Development
-
-```sh
-yarn dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-yarn build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-yarn test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-yarn test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-yarn build
-yarn test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-yarn lint
-```
+- `mock` reads quotes from a local JSON file, no network needed.
+- `http` fetches quotes from the DummyJSON-compatible API at `VITE_QUOTE_API_URL`.
