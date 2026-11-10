@@ -12,4 +12,11 @@
 import QuietStreet from '@/assets/undraw_quiet-street_v45k.svg'
 import Card from '@/components/Pomodoro/SettingCard.vue'
 import Configuration from '@/components/Pomodoro/Configuration.vue'
+import { useTitle } from '@vueuse/core'
+import { usePomodoroStore } from '@/stores/pomodoro-session/use-pomodoro-session-store'
+
+const store = usePomodoroStore()
+
+// Show the countdown in the browser tab; the original title is restored on unmount
+useTitle(() => `${store.formattedTime} – ${store.modeLabel}`)
 </script>

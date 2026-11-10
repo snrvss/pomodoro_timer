@@ -8,14 +8,16 @@
     </div>
     <SettingsView v-model="settingsOpen" />
 
-    <div class="justify-center text-center mb-4">TIME</div>
+    <div class="justify-center text-center mb-4" role="timer" aria-live="off">
+      {{ store.formattedTime }}
+    </div>
     <!-- Buttons -->
     <div class="flex justify-center gap-x-5 items-center">
-      <IconButton>
+      <IconButton aria-label="Reset" @click="store.reset()">
         <font-awesome-icon icon="repeat" class="text-primary" />
       </IconButton>
-      <FilledButton label="Start"></FilledButton>
-      <IconButton>
+      <FilledButton :label="store.isRunning ? 'Pause' : 'Start'" @click="toggle"></FilledButton>
+      <IconButton aria-label="Skip" @click="store.skip()">
         <font-awesome-icon icon="forward-step" class="text-primary" />
       </IconButton>
     </div>
@@ -28,9 +30,13 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faForwardStep, faRepeat, faGear } from '@fortawesome/free-solid-svg-icons'
 import IconButton from '../IconButton.vue'
 import SettingsView from '@/view/SettingsView.vue'
+import { usePomodoroStore } from '@/stores/pomodoro-session/use-pomodoro-session-store'
 library.add(faForwardStep, faRepeat, faGear)
 
+const store = usePomodoroStore()
 const settingsOpen = ref(false)
+
+const toggle = () => (store.isRunning ? store.pause() : store.start())
 
 const props = defineProps({
   timer: {
