@@ -163,6 +163,87 @@ describe('usePomodoroStore', () => {
       expect(store.round).toBe(2)
     })
 
+    describe('long-break cycle', () => {
+      /** Finishes the current pomodoro and returns the break the timer switched to. */
+      const completePomodoro = (store: ReturnType<typeof usePomodoroStore>) => {
+        expect(store.mode).toBe('pomodoro')
+        finishSession(store)
+        return store.mode
+      }
+
+      it('still gives the long break after the 4th finished pomodoro when breaks are picked via tabs', () => {
+        const store = usePomodoroStore()
+        const breaks: string[] = []
+
+        for (let pomodoro = 1; pomodoro <= 4; pomodoro++) {
+          expect(store.round).toBe(pomodoro)
+          breaks.push(completePomodoro(store))
+          // Leave every break through the tabs instead of letting it run out
+          store.setMode('short')
+          store.setMode('pomodoro')
+        }
+
+        expect(breaks).toEqual(['short', 'short', 'short', 'long'])
+        expect(store.round).toBe(5)
+      })
+
+      it('does not count a pomodoro that was abandoned by switching to a break tab', () => {
+        const store = usePomodoroStore()
+        completePomodoro(store) // pomodoro 1
+        store.setMode('pomodoro') // round 2
+
+        // Start pomodoro 2, give up halfway and jump to the Long Break tab
+        store.start()
+        vi.advanceTimersByTime(10 * MIN * 1000)
+        store.setMode('long')
+        finishSession(store) // the long break runs out
+        expect(store.mode).toBe('pomodoro')
+        expect(store.round).toBe(2) // pomodoro 2 still has to be done
+
+        // The cycle is unchanged: pomodoros 2 and 3 give short breaks, 4 the long one
+        expect(completePomodoro(store)).toBe('short')
+        store.setMode('pomodoro')
+        expect(completePomodoro(store)).toBe('short')
+        store.setMode('pomodoro')
+        expect(store.round).toBe(4)
+        expect(completePomodoro(store)).toBe('long')
+      })
+
+      it('keeps the cycle when the offered long break is swapped for a short one', () => {
+        const store = usePomodoroStore()
+        for (let pomodoro = 1; pomodoro <= 3; pomodoro++) {
+          completePomodoro(store)
+          store.setMode('pomodoro')
+        }
+        expect(completePomodoro(store)).toBe('long') // after pomodoro 4
+
+        store.setMode('short') // take a short break instead
+        finishSession(store)
+        expect(store.round).toBe(5)
+
+        const next: string[] = []
+        for (let pomodoro = 5; pomodoro <= 8; pomodoro++) {
+          next.push(completePomodoro(store))
+          store.setMode('pomodoro')
+        }
+        expect(next).toEqual(['short', 'short', 'short', 'long'])
+      })
+
+      it('follows a changed longBreakInterval', () => {
+        const store = usePomodoroStore()
+        store.updateSettings({ longBreakInterval: 2 })
+
+        const breaks: string[] = []
+        for (let pomodoro = 1; pomodoro <= 4; pomodoro++) {
+          breaks.push(completePomodoro(store))
+          store.setMode('short')
+          store.setMode('pomodoro')
+        }
+
+        expect(breaks).toEqual(['short', 'long', 'short', 'long'])
+      })
+    })
+
     it('resets the timer and stops it', () => {
       const store = usePomodoroStore()
       store.start()

@@ -28,6 +28,10 @@
           <Checkbox v-model:value="form.autoStartPomodoros" />
           Auto Start Pomodoros
         </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <Checkbox v-model:value="sound" data-test="sound-setting" />
+          Sound
+        </label>
       </div>
     </div>
 
@@ -40,29 +44,32 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import {
-  usePomodoroStore,
-  type PomodoroStoreSettings,
-} from '@/stores/pomodoro-session/use-pomodoro-session-store'
+import type { PomodoroSettings } from '@pomodoro-timer/core'
+import { usePomodoroStore } from '@/stores/pomodoro-session/use-pomodoro-session-store'
 import Modal from '@/components/Modal.vue'
 import TextField from '@/components/TextField.vue'
 import Checkbox from '@/components/Checkbox.vue'
 import TextButton from '@/components/TextButton.vue'
 import FilledButton from '@/components/FilledButton.vue'
+import { soundEnabled } from '@/composables/useSessionAlert'
 
 const open = defineModel<boolean>({ default: false })
 
 const store = usePomodoroStore()
 
 // Draft copy of the store settings: edits only apply on Save, Cancel discards them
-const form = ref<PomodoroStoreSettings>({ ...store.settings })
+const form = ref<PomodoroSettings>({ ...store.settings })
+const sound = ref(soundEnabled.value)
 
 watch(open, (isOpen) => {
-  if (isOpen) form.value = { ...store.settings }
+  if (!isOpen) return
+  form.value = { ...store.settings }
+  sound.value = soundEnabled.value
 })
 
 const save = () => {
   store.updateSettings(form.value)
+  soundEnabled.value = sound.value
   open.value = false
 }
 </script>

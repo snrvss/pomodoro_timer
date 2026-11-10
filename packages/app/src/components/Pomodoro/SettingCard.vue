@@ -1,5 +1,10 @@
 <template>
   <div class="pomodoro-card">
+    <!-- Current round -->
+    <span class="pomodoro-card__round" data-test="round">
+      <span class="sr-only">Round </span>#{{ store.round }}
+    </span>
+
     <!-- Settings -->
     <IconButton class="pomodoro-card__settings" aria-label="Settings" @click="settingsOpen = true">
       <font-awesome-icon icon="gear" />
@@ -65,6 +70,11 @@ const toggle = () => {
 
 .pomodoro-card__settings {
   @apply absolute top-4 right-4;
+}
+
+.pomodoro-card__round {
+  @apply absolute top-6 left-7 text-lg font-bold text-primary;
+  font-variant-numeric: tabular-nums;
 }
 
 .pomodoro-card__time {
