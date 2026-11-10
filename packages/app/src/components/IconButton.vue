@@ -6,10 +6,6 @@
 
 <script setup lang="ts">
 defineProps({
-  label: {
-    type: String,
-    default: '',
-  },
   disabled: {
     type: Boolean,
     default: false,
