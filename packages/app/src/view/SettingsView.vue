@@ -44,10 +44,8 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import {
-  usePomodoroStore,
-  type PomodoroStoreSettings,
-} from '@/stores/pomodoro-session/use-pomodoro-session-store'
+import type { PomodoroSettings } from '@pomodoro-timer/core'
+import { usePomodoroStore } from '@/stores/pomodoro-session/use-pomodoro-session-store'
 import Modal from '@/components/Modal.vue'
 import TextField from '@/components/TextField.vue'
 import Checkbox from '@/components/Checkbox.vue'
@@ -60,7 +58,7 @@ const open = defineModel<boolean>({ default: false })
 const store = usePomodoroStore()
 
 // Draft copy of the store settings: edits only apply on Save, Cancel discards them
-const form = ref<PomodoroStoreSettings>({ ...store.settings })
+const form = ref<PomodoroSettings>({ ...store.settings })
 const sound = ref(soundEnabled.value)
 
 watch(open, (isOpen) => {

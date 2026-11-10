@@ -1,21 +1,9 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
+import type { PomodoroSettings } from '@pomodoro-timer/core'
 
 export type PomodoroMode = 'pomodoro' | 'short' | 'long'
-
-/**
- * Durations are in minutes. Field names mirror `PomodoroSettings` from
- * `@pomodoro-timer/core` so the store can later delegate to a `PomodoroPort`.
- */
-export interface PomodoroStoreSettings {
-  pomodoroDuration: number
-  shortBreakDuration: number
-  longBreakDuration: number
-  longBreakInterval: number
-  autoStartBreaks: boolean
-  autoStartPomodoros: boolean
-}
 
 /** Payload passed to {@link usePomodoroStore} `onSessionEnd` listeners. */
 export interface SessionEndEvent {
@@ -27,7 +15,11 @@ export interface SessionEndEvent {
 
 export type SessionEndListener = (event: SessionEndEvent) => void
 
-export const DEFAULT_SETTINGS: PomodoroStoreSettings = {
+/**
+ * Default timer settings. Durations are in minutes. Uses core's `PomodoroSettings`, so the store
+ * can later delegate to a `PomodoroPort` without converting.
+ */
+export const DEFAULT_SETTINGS: PomodoroSettings = {
   pomodoroDuration: 25,
   shortBreakDuration: 5,
   longBreakDuration: 15,
@@ -72,9 +64,9 @@ const toPositiveInt = (value: unknown, fallback: number) => {
  * that is missing or invalid (non-positive or non-numeric durations).
  */
 const mergeSettings = (
-  prev: PomodoroStoreSettings,
-  patch: Partial<PomodoroStoreSettings>,
-): PomodoroStoreSettings => ({
+  prev: PomodoroSettings,
+  patch: Partial<PomodoroSettings>,
+): PomodoroSettings => ({
   pomodoroDuration: toPositiveInt(patch.pomodoroDuration, prev.pomodoroDuration),
   shortBreakDuration: toPositiveInt(patch.shortBreakDuration, prev.shortBreakDuration),
   longBreakDuration: toPositiveInt(patch.longBreakDuration, prev.longBreakDuration),
@@ -100,7 +92,7 @@ const mergeSettings = (
  * `isRunning` is not, so a reload always comes back paused.
  */
 export const usePomodoroStore = defineStore('pomodoro', () => {
-  const settings = useLocalStorage<PomodoroStoreSettings>(
+  const settings = useLocalStorage<PomodoroSettings>(
     `${STORAGE_PREFIX}settings`,
     { ...DEFAULT_SETTINGS },
     { mergeDefaults: true },
@@ -241,7 +233,7 @@ export const usePomodoroStore = defineStore('pomodoro', () => {
    * Merges new settings. Invalid durations/interval keep their previous value.
    * If the current session hasn't started yet, its time is updated too.
    */
-  const updateSettings = (patch: Partial<PomodoroStoreSettings>) => {
+  const updateSettings = (patch: Partial<PomodoroSettings>) => {
     const wasUntouched = !isRunning.value && remainingSeconds.value === durationFor(mode.value)
     settings.value = mergeSettings(settings.value, patch)
     if (wasUntouched) remainingSeconds.value = durationFor(mode.value)
