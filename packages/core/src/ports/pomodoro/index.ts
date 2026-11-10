@@ -1,4 +1,5 @@
-import { SessionType, PomodoroSettings, PomodoroSnapshot } from '../../entities/index'
+import { SessionType } from '../../entities/index'
+import type { PomodoroSettings, PomodoroSnapshot } from '../../entities/index'
 
 export interface PomodoroPort {
   /**

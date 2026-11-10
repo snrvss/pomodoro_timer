@@ -3,6 +3,7 @@
     <div class="flex flex-col items-center gap-8 w-[min(560px,100%)]">
       <img :src="ParkIllustration" alt="" class="w-[90%]" />
       <Configuration></Configuration>
+      <SessionCompleteCard></SessionCompleteCard>
       <Card></Card>
     </div>
   </div>
@@ -11,6 +12,7 @@
 <script setup lang="ts">
 import ParkIllustration from '@/assets/kawaii_park_transparent.svg'
 import Card from '@/components/Pomodoro/SettingCard.vue'
+import SessionCompleteCard from '@/components/Pomodoro/SessionCompleteCard.vue'
 import Configuration from '@/components/Pomodoro/Configuration.vue'
 import { useTitle } from '@vueuse/core'
 import { usePomodoroStore } from '@/stores/pomodoro-session/use-pomodoro-session-store'

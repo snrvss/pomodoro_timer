@@ -1,7 +1,7 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
-  "exclude": ["src/**/__tests__/*"],
+  "exclude": ["src/**/__tests__/*", "src/**/*.test.ts"],
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "strict": true,
@@ -10,9 +10,15 @@
     "alwaysStrict": true,
     "strictNullChecks": true,
     "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    // ES2022 for Error options ({ cause }) used by core errors
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
 
+    // Own src first; core's and infrastructure's src as fallback for their files this package
+    // type-checks (they import with `@/` too). Top-level folder names in src must not repeat a
+    // core or infrastructure folder name.
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*", "../core/src/*", "../infrastructure/src/*"]
     }
   }
 }

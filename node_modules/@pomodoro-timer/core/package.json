@@ -2,9 +2,10 @@
   "name": "@pomodoro-timer/core",
   "version": "1.0.0",
   "main": "index.ts",
+  "types": "index.ts",
   "scripts": {
     "test": "vitest run --passWithNoTests",
-    "type-check": "echo \"No type-check needed for core yet\""
+    "type-check": "tsc -p tsconfig.json"
   },
   "author": "",
   "license": "ISC",

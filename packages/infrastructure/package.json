@@ -1,16 +1,16 @@
 {
   "name": "@pomodoro-timer/infrastructure",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
+  "types": "index.ts",
   "scripts": {
     "test": "vitest run --passWithNoTests",
-    "type-check": "echo \"No type-check needed for core yet\""
+    "type-check": "tsc -p tsconfig.json"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@pomodoro-timer/core": "1.0.0",
-    "@pomodoro-timer/app": "1.0.0"
+    "@pomodoro-timer/core": "1.0.0"
   }
 }

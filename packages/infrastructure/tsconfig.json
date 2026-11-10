@@ -1,11 +1,19 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es6",
-    "baseUrl": ".",
-    "paths": {
-      "*": ["src/*"]
-    }
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM"],
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": [],
+    // Own src first; core's src as fallback for the core files this package type-checks
+    // (core imports with `@/` too). Top-level folder names in src must not repeat a core folder name.
+    "paths": { "@/*": ["./src/*", "../core/src/*"] }
   },
-  "include": ["src"]
+  "include": ["index.ts", "src"]
 }

@@ -1,0 +1,20 @@
+[
+  { "id": 1, "quote": "Nice focus! One step at a time.", "author": "Pomodoro Coach" },
+  { "id": 2, "quote": "Great work. Rest is part of the plan.", "author": "Pomodoro Coach" },
+  { "id": 3, "quote": "Keep it up, you are building a habit.", "author": "Pomodoro Coach" },
+  { "id": 4, "quote": "Well done is better than well said.", "author": "Benjamin Franklin" },
+  { "id": 5, "quote": "Little by little, one travels far.", "author": "J.R.R. Tolkien" },
+  { "id": 6, "quote": "Done is better than perfect.", "author": "Sheryl Sandberg" },
+  { "id": 7, "quote": "Quality is not an act, it is a habit.", "author": "Aristotle" },
+  { "id": 8, "quote": "The secret of getting ahead is getting started.", "author": "Mark Twain" },
+  {
+    "id": 9,
+    "quote": "The Will To Win, The Desire To Succeed, The Urge To Reach Your Full Potential... These Are The Keys That Will Unlock The Door To Personal Excellence.",
+    "author": "Confucius"
+  },
+  {
+    "id": 10,
+    "quote": "Associating with the wise and the knowledgeable people adds to the prestige of a person, and keeps the mind sharp for the work ahead.",
+    "author": "Ali ibn Abi Talib"
+  }
+]
